@@ -1,0 +1,24 @@
+<a href="/articles?user=<%= article.userId.username %>" class="d-flex align-items-center text-decoration-none">
+    <div class="flex-shrink-0 bg-light rounded-circle overflow-hidden author-img">
+      <% if (article.userId.profilePic) { %>
+        <img src="<%= article.userId.profilePic %>" width="50" height="50">        
+      <% } else { %>
+        <img src="profile.png" width="50" height="50">
+      <% } %>
+    </div>
+    <div class="flex-grow-1 ms-3 fs-6">
+      <% if ( article.userId.name) { %>
+          <p class="fw-semibold mb-0 text-dark">By <%= article.userId.name %></p> 
+        <% } else { %>
+          <p class="fw-semibold mb-0">By <%= article.userId.username %></p> 
+        <% } %>
+
+        <% if ( article.userId.title) { %>
+          <span class="text-muted">
+            <%= article.userId.title %>
+          </span> 
+        <% } else { %>
+          <span class="text-muted">Blogger</span> 
+        <% } %>
+    </div>
+  </a>

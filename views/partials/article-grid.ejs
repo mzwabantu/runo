@@ -1,0 +1,62 @@
+<% if( articles.length ) { %>
+    <section class="bg-light py-5">
+        <div class="container py-5">                            
+
+            <% if (locals.categories) { %>    
+                <div class="row mb-5"> 
+                    <% if (title) { %>
+                        <h1 class="mb-5"><%= title %></h1>  
+                    <% } %>
+                           
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex button-group article-filters">
+                            <button data-filter="*" class="btn btn-inline border-0 text-primary px-0 me-4 button is-checked">All</a>
+    
+                            <% categories.forEach( cat => { %>
+                                <button 
+                                    data-filter=".<%= cat.name.toLowerCase() %>"
+                                    class="btn btn-inline border-0 px-0 me-4 text-capitalize">
+                                    <%= cat.name %> 
+                                </button> 
+                            <% }) %>
+                            
+                        </div>
+                        <% if (viewAll) { %>
+                            <a href="/articles" class="btn btn-inline border-0">View All</a>
+                        <% } else { %>    
+                            <% if (locals.users) { %>                 
+                            
+                              <div class="text-end">                        
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    By User
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <% users.forEach( user => { %>
+                                            <li>
+                                                <a class="dropdown-item" 
+                                                    href="/articles?user=<%= user.username %> "><%= user.name %>
+                                                </a>
+                                            </li>
+                                    <% }) %>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="/articles">All Users</a></li>
+                                    </ul>
+                                </div>
+                              </div>  
+                              <% } %>            
+                        <% } %>                    
+                    </div>
+                </div>
+            <% } %>            
+
+            <div class="row mb-5 articles">
+                <% articles.forEach( article => { %> 
+                    <div class="col-md-6 col-lg-4 col-xl-3 article-item <%= article.categories.map( cat => cat.name).join(' ').toLowerCase() %>">
+                        <%- include('../partials/article-card.ejs', {article}) %> 
+                    </div>
+                <% } ) %> 
+            </div>
+        </div>
+    </section>
+<%  } %>

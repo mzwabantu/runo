@@ -1,0 +1,22 @@
+<%- include('../partials/user-banner.ejs' , {
+    title: 'Create An Category',
+    subtitle: 'Complete the form below to create a new category.'
+}); %> 
+
+<section>
+    <div class="container-xxl py-5">        
+        <form action="/categories" method="POST">
+            <div class="row py-5 justify-content-center">
+                <div class="col-lg-5">
+
+                    <%- include('_form_fields.ejs'); %> 
+
+                    <div class="mt-5 text-end ">
+                        <a href="/categories" class="btn btn-outline-secondary mb-3 me-3 px-5 text-uppercase">Cancel</a>
+                        <button type="submit" class="btn btn-primary text-white mb-3 px-5 text-uppercase">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

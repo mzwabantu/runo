@@ -1,0 +1,36 @@
+<%- include('../partials/user-banner.ejs' , {
+    title: 'Update Your Profile',
+    subtitle: 'Complete the form below to update your profile.',
+    image: "banner.jpg"
+}); %> 
+
+
+<section>
+    <div class="container py-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 py-5">
+
+                <div class="h-100 bg-light d-flex flex-column align-items-center justify-content-center px-5">
+                    <form action="/users/<%= user.id %>?_method=PUT" method="POST"  enctype="multipart/form-data"
+                        class="w-100" style="max-width: 400px;">
+    
+                        <%- include('../auth/_form_fields.ejs', {signup: true, profile: true}) %>    
+                        
+                        <div class="d-grid gap-2 mb-4">
+                            <button 
+                                class="btn btn-lg btn-primary text-white text-uppercase" 
+                                type="submit">Update Profile</button>                                
+                        </div>                        
+                    </form>
+                    <div class="mt-4 text-center">
+                        <form action="/users/<%= userId %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-sm btn-outline-dark text-uppercase border-0">
+                                <i class="bi bi-trash-fill me-1"></i> Delete Account</button>  
+                        </form>                                
+                        <div class="text-muted mt-2 fs-6">All articles by user will be deleted.</div> 
+                    </div>
+                </div>                
+            </div>   
+        </div>
+    </div>
+</section>

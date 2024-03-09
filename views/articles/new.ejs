@@ -1,0 +1,23 @@
+<%- include('../partials/user-banner.ejs' , {
+    title: 'Create An Article',
+    subtitle: 'Complete the form below to create a new article.',
+    image: article.thumbnail
+}); %> 
+
+<section>
+    <div class="container-xxl py-5">        
+        <form action="/articles" method="POST" enctype="multipart/form-data">
+            <div class="row py-5 justify-content-center">
+                <div class="col-lg-8">
+
+                    <%- include('_form_fields.ejs'); %> 
+
+                    <div class="mt-5 text-end ">
+                        <a href="/articles" class="btn btn-outline-secondary mb-3 me-3 px-5 text-uppercase">Cancel</a>
+                        <button type="submit" class="btn btn-primary text-white mb-3 px-5 text-uppercase">Create</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

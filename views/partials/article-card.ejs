@@ -1,0 +1,33 @@
+<div class="card article-card border-0 w-100 mb-5">
+    
+    <% if( article.categories) { %> 
+        <div class="categories">            
+            <% article.categories.forEach( cat => { %>
+                <a href="/categories/<%= cat.slug %>" 
+                    class="btn btn-sm btn-secondary py-1 px-2 text-uppercase fs-6">
+                    <small><%= cat.name %></small>
+                </a>
+            <% }) %> 
+        </div>
+    <% } %> 
+
+    <%- include('user-actions.ejs')  %> 
+
+    <img 
+        src="<%= article.thumbnail %>"  
+        class="card-img-top">
+    <div class="card-body">
+        <div class="text-muted mb-3 fs-6">
+            <%= new Date(article.createdAt).toLocaleDateString().replaceAll('/', '.') %>
+        </div>
+        
+        <a href="/articles/<%= article.slug %>" class="text-decoration-none">
+            <h5 class="card-title fw-semibold mb-3 text-dark"><%= article.title %></h5>
+            <p class="card-text fs-6 text-muted mb-4"><%= article.excerpt %></p>
+        </a>
+
+        <div class="border-top pt-3">
+            <%- include('user-media.ejs') %> 
+        </div>
+    </div>
+  </div>

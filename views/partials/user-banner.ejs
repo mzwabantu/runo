@@ -1,0 +1,20 @@
+<section class="bg-dark text-bg-dark py-5 position-relative overflow-hidden">
+    <img 
+        <% if(image) { %>
+            src="<%= image %>" 
+        <% } else { %>
+            src="banner.jpg" 
+        <% } %>
+        class="position-absolute top-0 left-0 w-100 h-100"
+        style="opacity: 0.35; object-fit: cover;">
+    <div class="container-xxl py-5 position-relative">
+        <div class="text-center mt-4 pt-5 pb-2">
+            <h1 class="mb-2">
+                <%= title %>
+            </h1>
+            <p class="text-light text-opacity-75 mb-0">
+                <%= subtitle %>
+            </p>            
+        </div>
+    </div>
+</section>

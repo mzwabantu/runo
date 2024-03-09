@@ -1,0 +1,109 @@
+<% if( recentArticles.length ) { %>
+    <section class="banner bg-dark text-white overflow-hidden">   
+        <div id="carouselExampleIndicators" class="carousel slide h-100" data-bs-ride="true">
+            <div class="carousel-indicators">                
+            <button type="button" 
+                data-bs-target="#carouselExampleIndicators" 
+                data-bs-slide-to="0" 
+                class="active me-2" 
+                aria-current="true"
+                aria-label="Slide 1"></button>
+
+                <% const slideIndicators =  recentArticles.length - 1 %>     
+                <% for( let i = 0; i < slideIndicators; i++) { %>
+                    <button 
+                        type="button" 
+                        class="me-2" 
+                        data-bs-target="#carouselExampleIndicators" 
+                        data-bs-slide-to="<%= i+1 %>" 
+                        aria-label="Slide <%= i+2 %>"></button>
+                <% }; %>
+            </div>
+            <div class="carousel-inner h-100">
+
+            <% recentArticles.forEach( (article, index) => { %>
+                <div class="carousel-item h-100 <% if(index == 0) { %>active<% } %>">
+                    <img 
+                        src="<%= article.thumbnail %>" 
+                        class="d-block w-100 h-100" 
+                        style="opacity: .5; object-fit: cover;">
+                    
+                    <div class="carousel-caption text-start pb-5">
+                        <div class="row mb-4">
+                            <div class="col-lg-6">
+
+                                <% if( article.categories) { %> 
+                                    <div class="categories">            
+                                        <% article.categories.forEach( cat => { %>
+                                            <a href="/categories/<%= cat.slug %>" class="btn btn-secondary text-uppercase mb-4 mx-1">
+                                                <small><%= cat.name %></small>
+                                            </a>
+                                        <% }) %> 
+                                    </div>
+                                <% } %> 
+                                
+                                <h1>
+                                    <a href="/articles/<%= article.slug %>" class="text-decoration-none text-white">
+                                        <%= article.title %>
+                                    </a>
+                                </h1>
+                                <div class="d-flex text-light  text-opacity-75">
+                                    <span class="me-3"><%= new Date(article.createdAt).toLocaleDateString().replaceAll('/', '.') %></span>
+                                    <div class="border-top mt-2" style="width: 30px"></div>
+                                    <p class="fs-h6 ms-3 mb-5"><%= article.excerpt %> </p>
+                                </div>                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            <% }); %>
+            
+            </div>
+        </div>
+    </section>
+<%  } %>
+
+<%- include('partials/article-grid.ejs', { 
+    articles, 
+    categories, 
+    title: 'Popular Articles', 
+    viewAll: true }) %>
+
+
+<% if ( featuredArticle.length ) {  %>
+    <% featuredArticle.forEach( article => {  %>
+        <%- include('partials/article-banner.ejs', { article }) %>
+    <%  })  %>
+<% } %> 
+
+
+<% if ( editorsPick.length ) { %>
+    <section class="bg-light py-5">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <h1 class="mb-4">Editor’s Pick</h1>
+            </div>
+    
+            <div class="row mb-5">
+                <% editorsPick.forEach( article => { %> 
+                    <div class="col-md-6">
+                        <%- include('partials/article-block.ejs', {article}) %> 
+                    </div>
+                <% } ) %> 
+            </div>
+        </div>
+    </section>
+<% } %>
+
+
+<% if( articles.length <= 0  ) { %>
+        <%- include('partials/404.ejs', {
+            title: "No Articles Found",
+            subtitle: "Be the first to create and article."
+        }) %> 
+<%  } %>
+
+
+
+

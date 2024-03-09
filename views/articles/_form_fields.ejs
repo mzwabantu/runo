@@ -1,0 +1,83 @@
+<%- include('../partials/errors.ejs') %> 
+
+<div class="mb-5">
+    <label for="title" class="form-label fs-5 fw-medium">Enter Article Title</label>
+    <input 
+        type="text" 
+        class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+            border-bottom  fs-2 px-0" 
+        id="title" 
+        name="title"
+        placeholder="Sonnet 18"
+        value="<%= article.title %>">
+</div>
+
+<div class="mb-5">
+    <label for="excerpt" class="form-label fs-5 fw-medium">Excerpt</label>
+    <textarea 
+        class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+            border-bottom  fs-4 px-0" 
+        placeholder="Shall I compare thee to a summer’s day?" 
+        name="excerpt"  
+        id="excerpt"                             
+        rows="1"><%= article.excerpt %></textarea>
+</div>
+
+<div class="mb-5">
+    <label for="body" class="form-label fs-5 fw-medium">Content</label>
+    <textarea 
+    class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+        border-bottom fs-4 px-0" 
+    name="body"  
+    placeholder="Shall I compare thee to a summer’s day? Thou art more lovely and more temperate. And summer’s lease hath all too short a date. Sometime too hot the eye of heaven shines, And often is his gold complexion dimmed; And every fair from fair sometime declines..."
+    id="body" 
+    rows="4"><%= article.body %></textarea>
+</div>
+
+<% if (locals.categories) { %>
+    <div class="mb-5">
+        <p class="form-label fs-5 fw-medium mb-3">Select Categories</p>
+
+        <div class="d-flex flex-wrap">           
+            
+            <% categories.forEach((category, index) => { %>
+                <% let selectedCat = article.categories.find( cat => cat.id === category.id ); %>
+
+                <% if ( selectedCat && category.id === selectedCat.id ) { %>
+                    <div class="me-3">
+                        <input  
+                            class="btn-check" 
+                            name="categories" type="checkbox" 
+                            id="<%= category.name %>" 
+                            value="<%= category.id %>" checked>
+                        <label 
+                            class="btn btn-sm btn-outline-secondary fs-6 text-uppercase" 
+                            for="<%= category.name %>">
+                            <%= category.name %>
+                        </label>
+                    </div>
+                <% } else { %>
+                    <div class="me-3">
+                        <input 
+                            class="btn-check" 
+                            name="categories" 
+                            type="checkbox" 
+                            id="<%= category.name %>" 
+                            value="<%= category.id %>"
+                            data-id="<%= article.categories[index] %>">
+                        <label class="btn btn-sm btn-outline-secondary fs-6 text-uppercase" for="<%= category.name %>"><%= category.name %> </label>
+                    </div>
+                <% } %>
+            <% }) %>
+        </div>
+    </div>
+<% } %>
+
+<div class="mb-3">
+    <label for="formFile" class="form-label fs-5 fw-medium mb-3">Upload Article Thumbnail</label>
+    <input 
+        name="thumbnail"
+        class="form-control rounded-0 shadow-0 bg-transparent border-bottom fs-5 text-secondary" 
+        type="file" 
+        id="formFile"> 
+</div>

@@ -1,0 +1,30 @@
+<%- include('../partials/user-banner.ejs' , {
+    title: 'Article Categories',
+    subtitle: 'Complete the form below to create a new category.',
+    image: ''
+}); %> 
+
+<div class="container-xxl py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="py-5 d-flex flex-wrap" >
+                <% categories.forEach(category => { %>
+
+                    <div class="card border-0 rounded bg-dark text-bg-dark m-2 flex-grow-1" style="min-width: 30%; height: 220px" >
+                        <img 
+                        src="https://source.unsplash.com/random" 
+                        class="card-img h-100 w-100" 
+                        style="opacity: 0.35" />          
+                    
+                        <a href="/categories/<%= category.slug %> ">
+                            <div class="card-img-overlay d-flex flex-column justify-content-start w-75">                         
+                                <h4 class="card-title fw-semibold fs-5 mb-1"><%= category.name %></h4>
+                                <p class="card-text fs-6 mb-4 text-light text-opacity-75">120 Article(s)</p>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>

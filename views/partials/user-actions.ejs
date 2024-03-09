@@ -1,0 +1,14 @@
+<% if (isAuth && userId === article.userId.id) { %> <!-- IF LOGGED IN-->
+<div class="user-actions d-flex justify-content-end">
+    <form action="/articles/<%= article.id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-sm rounded-circle btn-light me-2 shadow shadow-sm">
+            <i class="bi bi-trash-fill"></i>
+        </button>
+    </form>
+    
+    <a href="/articles/<%= article.id %>/edit" 
+        class="btn btn-sm rounded-circle btn-primary text-white  shadow shadow-sm">
+        <i class="bi bi-pencil-fill"></i>
+    </a>            
+</div>
+<% } %> 

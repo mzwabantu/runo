@@ -1,0 +1,136 @@
+<%- include('../partials/user-banner.ejs', { 
+    title: "Contact Us",
+    subtitle: "Get In Touch",
+    image: "banner.jpg"
+}) %> 
+
+<section class="py-5">
+    <div class="container-sm py-5">
+        <div class="row text-center">
+            <div class="col-xl-3">
+                <div class="fs-5 social-icon d-inline-flex align-items-center justify-content-center bg-primary rounded-circle text-white" >
+                    <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <p class="fs-6 fw-bold text-uppercase mb-0 mt-3">Address</p>
+                <p class="text-muted fs-5">191 Middleville Road, NY 1001, Sydney Australia</p>
+            </div>
+            <div class="col-xl-3">
+                <div class="fs-5 social-icon d-inline-flex align-items-center justify-content-center bg-primary rounded-circle text-white" >
+                    <i class="bi bi-envelope-fill"></i>
+                </div>
+                <p class="fs-6 fw-bold text-uppercase mb-0 mt-3">Email</p>
+                <p class="text-muted fs-5">mike@runo.com</p>
+            </div>
+            <div class="col-xl-3">
+                <div class="fs-5 social-icon d-inline-flex align-items-center justify-content-center bg-primary rounded-circle text-white" >
+                    <i class="bi bi-telephone-fill"></i>
+                </div>
+                <p class="fs-6 fw-bold text-uppercase mb-0 mt-3">Phone</p>
+                <p class="text-muted fs-5">+944 450 904 505</p>
+            </div>
+            <div class="col-xl-3">
+                <div class="fs-5 social-icon d-inline-flex align-items-center justify-content-center bg-primary rounded-circle text-white" >
+                    <i class="bi bi-share-fill"></i>
+                </div>
+                <p class="fs-6 fw-bold text-uppercase mb-0 mt-3">Social</p>
+                <nav class="fs-5 d-flex justify-content-center text-muted text-opacity-25">
+                    <a href="https://facebook.com" target="_blank" class="nav-link mb-3 mx-3">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="nav-link mb-3 mx-3">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" class="nav-link mb-3 mx-3">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                    <a href="https://pinterest.com" target="_blank" class="nav-link mb-3 mx-3">
+                        <i class="bi bi-pinterest"></i>
+                    </a>
+                    <a href="https://behance.net" target="_blank" class="nav-link mb-3 mx-3">
+                        <i class="bi bi-behance"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="pt-2 pb-5 mb-5">
+    <div class="container-xxl mb-5">
+        <div class="row bg-white rounded-2 overflow-hidden">
+            <div class="col-lg-7 p-2 p-lg-4">
+                <form action="#" class="p-4 p-lg-5">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-5">
+                                <label for="name" class="form-label fs-5 fw-medium">Full Name</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                                        border-bottom fs-4 px-0" 
+                                    id="name" 
+                                    name="name"
+                                    placeholder="John Doe">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-5">
+                                <label for="email" class="form-label fs-5 fw-medium">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                                        border-bottom fs-4 px-0" 
+                                    id="email" 
+                                    name="email"
+                                    placeholder="johndoe@mail.com">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-5">
+                                <label for="phone" class="form-label fs-5 fw-medium">Phone</label>
+                                <input 
+                                    type="tel" 
+                                    class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                                        border-bottom fs-4 px-0" 
+                                    id="phone" 
+                                    name="phone"
+                                    placeholder="Contact number">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-5">
+                                <label for="subject" class="form-label fs-5 fw-medium">Subject</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                                        border-bottom fs-4 px-0" 
+                                    id="subject" 
+                                    name="subject"
+                                    placeholder="Blogging">
+                            </div>
+                        </div>
+                    </div>                 
+                    
+                    <div class="mb-5">
+                        <label for="message" class="form-label fs-5 fw-medium">Message</label>
+                        <textarea 
+                            class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                                border-bottom fs-4 px-0" 
+                            id="message" 
+                            name="message"
+                            placeholder="I just wanted to say..."></textarea>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="btn btn-lg btn-primary text-white mb-3 px-5 text-uppercase">Send Message</button>
+                    
+                </form>
+            </div>
+            <div class="col-lg-5 position-relative overflow-hidden">
+                <img src="banner.jpg" style="object-fit: cover;" class="position-absolute top-0 left-0 w-100 h-100">
+            </div>
+        </div>
+    </div>
+</section>

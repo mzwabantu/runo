@@ -1,0 +1,115 @@
+<%- include('../partials/article-banner.ejs', { article, active }) %> 
+
+<section class="py-5">
+    <div class="container-xxl py-5"> 
+        <% if (locals.errorMessage) { %> 
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8">
+                    <div class="alert alert-danger d-flex align-items-center mb-5" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <div>
+                            <%= errorMessage %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <% } %> 
+
+
+        <div class="row">
+            <div class="col-lg-6 col-xl-3">
+                <div class="d-flex align-items-center fw-semibold mb-3">
+                    <span class="me-3">
+                        <%= new Date(article.createdAt).toLocaleDateString().replaceAll('/', '.') %>
+                    </span>
+                    <span class="border-top me-3" style="width: 40px"></span>
+                    <span>4 minutes</span>
+                </div>
+                <div class="d-none d-lg-inline-block mx-auto text-start my-4">
+                    <%- include('../partials/user-actions.ejs') %>                     
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-9 fs-5 lh-3 article-content">
+                <%- article.sanitizedHtml %> 
+
+                <% if( article.categories) { %> 
+            
+                    <div class="my-5">            
+                        <% article.categories.forEach( cat => { %>
+                            <a href="/categories/<%= cat.slug %>" class="btn btn-sm btn-outline-secondary py-1 px-2 text-uppercase me-2 fs-6">
+                                <small><%= cat.name %></small>
+                            </a>
+                        <% }) %> 
+                    </div>
+                <% } %> 
+
+
+                <div class="border-top py-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <%- include('../partials/user-media.ejs') %> 
+                        </div>
+                        <div class="col-lg-6 mt-4 mt-lg-0 d-flex justify-content-lg-end">
+                            <a 
+                                href="https://www.facebook.com/" 
+                                target="_blank"
+                                class="nav-link mx-2 fw-medium fs-h5 mx-1">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a 
+                                href="https://twitter.com/" 
+                                target="_blank"
+                                class="nav-link mx-2 fw-semibold fs-h5 mx-1">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a 
+                                href="https://youtube.com/" 
+                                target="_blank"
+                                class="nav-link mx-2 fw-semibold fs-h5 mx-1">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                            <a 
+                                href="https://pinterest.com/" 
+                                target="_blank"
+                                class="nav-link mx-2 fw-semibold fs-h5 mx-1">
+                                <i class="bi bi-pinterest"></i>
+                            </a>
+                            <a 
+                                href="https://www.behance.net/" 
+                                target="_blank"
+                                class="nav-link mx-2 fw-semibold fs-h5 mx-1">
+                                <i class="bi bi-behance"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-inline-block d-lg-none mx-auto text-start my-4">
+                    <%- include('../partials/user-actions.ejs') %>                     
+                </div>
+            </div>            
+        </div>
+
+
+        
+    </div>
+</section>
+
+
+<% if(relatedArticles.length > 0) { %> 
+    <section class="py-5 bg-secondary" style="--bs-bg-opacity: .075;">
+        <div class="container-xxl py-5">
+            <div class="row">
+                <h4 class="fs-4 mb-4 <% if(relatedArticles.length <= 2) {%>text-center<% } %>">Related Articles</h4>
+            </div>
+            <div class="row <% if(relatedArticles.length <= 2) {%>justify-content-center<% } %>">
+                <% relatedArticles.forEach(article => { %>
+                    <div class="col-md-6 col-xl-4">
+                        <%- include('../partials/article-block.ejs', {article}) %>  
+                    </div>
+                <% }) %>            
+            </div>
+        </div>
+    </section>
+<% } %>    

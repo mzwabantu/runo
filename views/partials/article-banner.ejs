@@ -1,0 +1,47 @@
+<section class="banner bg-dark text-white overflow-hidden position-relative d-flex align-items-center">
+    <img 
+        src="<%= article.thumbnail %>" 
+        class="position-absolute top-0 left-0 bottom-0 right-0 w-100" 
+        style="opacity: 0.25">
+
+    <div class="container position-relative text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <% if( article.categories) { %> 
+                    <div class="categories">            
+                        <% article.categories.forEach( cat => { %>
+                            <a 
+                                href="/categories/<%= cat.slug %>" 
+                                class="btn btn-secondary text-uppercase mb-4 mx-1">
+                                <small><%= cat.name %></small>
+                            </a>
+                        <% }) %> 
+                    </div>
+                <% } %> 
+
+                
+
+                <h1>
+                    <% if ( active == article.slug ) { %>
+                        <%= article.title %>                         
+                    <% } else { %>
+                        <a href="/articles/<%= article.slug %>" class="text-decoration-none text-white">
+                            <%= article.title %>
+                        </a>
+                    <% } %>
+                    
+                </h1>
+
+                <div class="text-light mt-2 text-opacity-75">
+                    <p class="fs-h6 mb-4"><%= article.excerpt %></p>
+                    <div class="border-top mb-3 mx-auto" style="width: 30px"></div>
+                    <span><%= new Date(article.createdAt).toLocaleDateString().replaceAll('/', '.') %></span>
+                </div>    
+                <div class="d-inline-block mx-auto text-center mt-4">
+                    <%- include('user-actions.ejs') %> 
+                </div>
+                                            
+            </div>
+        </div>
+    </div>    
+</section>

@@ -1,0 +1,74 @@
+<%- include('../partials/errors.ejs') %> 
+
+<% if (!profile) { %>
+    <div class="mb-5">
+        <label for="username" class="form-label fs-5 fw-medium">Username</label>
+        <input 
+            type="text" 
+            class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                border-bottom  fs-4 px-0" 
+            id="username" 
+            name="username"
+            placeholder="JohnDoe">
+    </div>
+<% } %>
+
+<% if (signup) { %>
+    <div class="mb-5">
+        <label for="email" class="form-label fs-5 fw-medium">Email</label>
+        <input 
+            type="email" 
+            class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                border-bottom  fs-4 px-0" 
+            id="email" 
+            name="email"
+            placeholder="johndoe@mail.com"
+            value="<%= user.email %>">
+    </div>
+<% } %>
+
+<% if (profile) { %>
+    <div class="mb-5">
+        <label for="name" class="form-label fs-5 fw-medium">Full Name</label>
+        <input 
+            type="text" 
+            class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                border-bottom  fs-4 px-0" 
+            id="name" 
+            name="name"
+            placeholder="John James Doe"
+            value="<%= user.name %>">
+    </div>
+    <div class="mb-5">
+        <label for="title" class="form-label fs-5 fw-medium">Title</label>
+        <input 
+            type="text" 
+            class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                border-bottom  fs-4 px-0" 
+            id="title" 
+            name="title"
+            placeholder="Creative Blogger"
+            value="<%= user.title %>">
+    </div>
+
+    <div class="mb-5">
+        <label for="profilePic" class="form-label fs-5 fw-medium">Profile Image</label>
+        <input 
+            type="file" 
+            class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+                border-bottom  fs-4 px-0" 
+            id="profilePic" 
+            name="profilePic">
+    </div>
+<% } %>
+
+<div class="mb-5">
+    <label for="password" class="form-label fs-5 fw-medium">Password</label>
+    <input 
+        type="password" 
+        class="form-control rounded-0 shadow-0 border-0 bg-transparent 
+            border-bottom fs-4 px-0" 
+        id="password" 
+        name="password"
+        placeholder="X2!73*%(&)F#$?">
+</div>

@@ -1,0 +1,31 @@
+    <div class="card border-0 rounded w-100 bg-dark text-bg-dark article-block" >
+        <img 
+        src="<%= article.thumbnail %>" 
+        class="card-img h-100" 
+        style="opacity: 0.35" />
+    
+        <% if( article.categories) { %> 
+            <div class="categories">            
+                <% article.categories.forEach( cat => { %>
+                    <a 
+                        href="/categories/<%= cat.slug %>" 
+                        class="btn btn-sm btn-secondary text-uppercase py-1 px-2 fs-6">
+                        <small><%= cat.name %></small>
+                    </a>
+                <% }) %> 
+            </div>
+        <% } %> 
+
+        <%- include('user-actions.ejs') %> 
+
+    
+        <div class="card-img-overlay d-flex flex-column justify-content-end w-75">
+            <div class="mb-3 fs-6 ">
+                <%= new Date(article.createdAt).toLocaleDateString().replaceAll('/', '.') %>
+            </div>
+            <a href="/articles/<%= article.slug %>" class="text-decoration-none text-white">
+                <h5 class="card-title fw-semibold mb-3"><%= article.title %></h5>
+                <p class="card-text fs-6 mb-4"><%= article.excerpt %></p>
+            </a>
+        </div>
+    </div>

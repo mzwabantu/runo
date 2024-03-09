@@ -1,0 +1,11 @@
+<%- include('../partials/user-banner.ejs' , {
+    title: `Articles in ${category.name}`,
+    subtitle: 'The credibly productivate seamless data.',
+    image: 'banner.jpg'
+}); %> 
+
+<%- include('../partials/article-grid.ejs', { 
+    articles, 
+    title: '', 
+    viewAll: false }) %>
+

@@ -1,0 +1,18 @@
+<% 
+    const title = query ? `Articles by ${articles[0].userId.name}` : 'Latest Articles'
+ %> 
+
+<% if (locals.articles) { %>
+    <%- include('../partials/user-banner.ejs', { 
+        image, 
+        title: title,
+        subtitle: 'The credibly productivate seamless data.'
+    }) %> 
+<% } %>
+
+<%- include('../partials/article-grid.ejs', { 
+    articles, 
+    categories, 
+    users,
+    title: null, 
+    viewAll: false }) %>

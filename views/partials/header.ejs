@@ -1,0 +1,104 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-dark bd-navbar fixed-top" id="main-header">
+    <nav class="container-xxl my-2">
+          <a href="/" class="navbar-brand text-uppercase fw-bold fs-3 text-white">Runo</a>
+    
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-medium">
+              <li class="nav-item">
+                <a class="nav-link mx-2 fw-medium text-capitilize active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2 fw-medium text-capitilize" href="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2 fw-medium text-capitilize" href="/articles">Articles</a>
+              </li>
+              <li class="nav-item separator">
+                <a class="nav-link mx-2 fw-medium text-capitilize" href="/contact-us">Contact Us</a>
+              </li>
+              <li class="nav-item ms-1 d-none d-lg-block">
+                <a 
+                    href="https://facebook.com" 
+                    target="_blank" 
+                    class="nav-link mx-2 fw-medium fs-h5">
+                    <i class="bi bi-facebook"></i>
+                </a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <a 
+                    href="https://twitter.com" 
+                    target="_blank" 
+                    class="nav-link mx-2 fw-medium fs-h5">
+                    <i class="bi bi-twitter"></i>
+                </a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <a 
+                  href="https://youtube.com" 
+                  target="_blank" 
+                  class="nav-link mx-2 fw-medium fs-h5">
+                    <i class="bi bi-youtube"></i>
+                </a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <a  
+                    href="https://pinterest.com" 
+                    target="_blank" 
+                    class="nav-link mx-2 fw-medium fs-h5">
+                    <i class="bi bi-pinterest"></i>
+                </a>
+              </li>
+              <li class="nav-item separator d-none d-lg-block">
+                <a 
+                  
+                    href="https://behance.net/" 
+                    target="_blank" 
+                    class="nav-link mx-2 fw-medium fs-h5">
+                    <i class="bi bi-behance"></i>
+                </a>
+              </li>
+            </ul>
+            <button class="btn btn-inline rounded-0 border-0 text-white ms-2 px-3" onclick="search()">
+                <i class="bi bi-search"></i>
+            </button>
+            <!-- Example single danger button -->
+            <div class="btn-group user-admin">
+              <button 
+                type="button" 
+                class="btn btn-light dropdown-toggle border-0 p-0 text-primary" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false"
+                style="width: 40px; height: 40px;">
+
+                <% if (locals.profilePic !== null) { %>
+                 <img src="<%= profilePic %>" width="34" height="34" class="rounded">
+                  <!-- <i class="bi bi-person-fill"></i> -->
+                  <% } else { %>
+                  <i class="bi bi-person-fill"></i>
+                <% } %>
+
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <% if (isAuth) { %>
+                  <li><a class="dropdown-item" href="/users/<%= userId %>">Profile</a></li>
+                  <li><a class="dropdown-item" href="/articles?user=<%= username %>">My Articles</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <form action="/auth/logout" method="POST">
+                      <button type="submit" class="dropdown-item " href="/auth/logout">Logout</button>
+                    </form>
+                  </li>
+                <% } else { %>
+                  <li><a class="dropdown-item" href="/auth">Sign In</a></li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+    </nav>
+</header>
+
+
+

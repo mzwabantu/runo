@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runo</title>
+    <link rel="stylesheet" href="/app.css">
+
+    <script defer src="/main.js"></script>
+</head>
+<body class="bg-light position-relative">
+
+    <section style="height: 100vh;">
+        <div class="container-fluid h-100">
+            <div class="row h-100 overflow-hidden" id="authForm">
+                <div class="col-lg-6 p-0">
+                    <%- include('_banner.ejs') %> 
+
+                    <div class="h-100 bg-light d-flex align-items-center justify-content-center px-5">
+                        <form action="/auth/login" method="POST" class="w-100" style="max-width: 400px;">
+                            <h1 
+                                class="d-lg-none navbar-brand text-uppercase text-center 
+                                fw-bold fs-1 text-primary mb-5">Runo</h1>
+        
+                            <%- include('_form_fields.ejs', {signup: false, profile: false, user}) %>    
+                            
+                            <div class="d-grid gap-2 mb-4">
+                                <button 
+                                    class="btn btn-lg btn-primary text-white text-uppercase" 
+                                    type="submit">Login</button>
+                            </div>
+        
+                            <p class="text-center">
+                                Don't have an account? 
+                                <button 
+                                    type="button" 
+                                    class="btn btn-inline border-0 fw-semibold text-primary px-1" 
+                                    onClick="switchPanel()">Sign Up</button>
+                            </p>
+                        </form>
+                    </div>                
+                </div>
+                <div class="col-lg-6 p-0">
+                    <%- include('_banner.ejs') %> 
+                    
+                    <div class="bg-light h-100 d-flex align-items-center justify-content-center px-5">
+                        <form action="/auth/register" method="POST" class="w-100" style="max-width: 400px;">
+                            <h1 
+                                class="d-lg-none navbar-brand text-uppercase text-center 
+                                fw-bold fs-1 text-primary mb-5">Runo</h1>
+        
+                            <%- include('_form_fields.ejs', {signup: true, profile: false, user}) %>    
+                            
+                            <div class="d-grid gap-2 mb-4">
+                                <button 
+                                    class="btn btn-lg btn-primary text-white text-uppercase" 
+                                    type="submit">Sign Up</button>
+                            </div>
+        
+                            <p class="text-center">
+                                Already have an account? 
+                                <button 
+                                    type="button" 
+                                    class="btn btn-inline border-0 fw-semibold text-primary px-1" 
+                                    onClick="switchPanel()">Login</button>
+                            </p>
+                        </form>
+                    </div>                
+                </div>
+                
+            </div>        
+        </div>
+    </section>
+
+</body>
+</html>
