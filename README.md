@@ -1,4 +1,4 @@
-# Eezy Bank 
+# Runo
 
 In this project you’ll build a simple Blogging Application with [Node](https://nodejs.org/docs/latest/api/), [Express](https://expressjs.com/) and [Mongoose](). This application has a login authentication system, user sessions and CRUD operations to the a MongoDB database. 
 
